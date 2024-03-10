@@ -1,8 +1,1 @@
-# Fact
-
-```js
-{
-  "id": string,
-  "name": string
-}
-```
+Vite Detective Game
