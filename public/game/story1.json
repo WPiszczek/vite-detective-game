@@ -1,0 +1,47 @@
+{
+  "name": "Story 1",
+  "startingPanelId": "panel-0",
+  "storyPanels": {
+    "panel-0": {
+      "name": "Panel 0",
+      "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur placerat, mi nec tempus congue, tellus nulla vehicula erat, nec blandit risus libero quis risus. Vivamus sapien turpis, euismod id aliquam non, consectetur at ante. Nullam sed condimentum urna. Fusce varius tempus interdum. Nam pellentesque dolor id justo molestie, sit amet rhoncus neque iaculis. Ut ornare luctus velit, ut placerat mi blandit non. Duis nec sem tellus. Donec placerat ullamcorper ligula eu mollis.</p><p>Donec eu rhoncus tortor, sodales hendrerit urna. Aliquam vel pulvinar arcu, id scelerisque lorem. Aliquam at lacus porta, pellentesque nulla a, blandit libero. Morbi molestie augue a rutrum tempor. Vestibulum fringilla ante id mi tempus, sed posuere mi semper. Nam interdum sodales augue. Nam vel sem lectus.</p><p>Morbi vulputate, risus non hendrerit auctor, nisl nibh eleifend nibh, nec dapibus ante libero et tellus. Phasellus sed magna vitae purus scelerisque laoreet non non eros. Nam blandit non dolor a semper. Sed semper ultricies porttitor. Integer non tincidunt nisl. Quisque ornare mattis nibh. Proin a ante enim. Nulla pulvinar orci quis odio aliquet congue. Donec non ante neque. Ut rutrum aliquam nisl, eu faucibus tortor eleifend quis. Fusce vel ex magna. Donec fermentum in enim eget tristique. Sed in nibh ac nunc pellentesque vehicula gravida ut purus. Phasellus non nibh urna. Duis blandit ac ligula et rutrum.</p>",
+      "background": "panel0.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "content": "Go to Panel 1",
+          "panelId": "panel-1"
+        },
+        {
+          "id": "action-2",
+          "content": "Go to Panel 2",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-1": {
+      "name": "Panel 1",
+      "content": "Content of Panel 1",
+      "background": "panel1.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "content": "Go to Panel 2",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-2": {
+      "name": "Panel 2",
+      "content": "Content of Panel 2",
+      "background": "panel2.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "content": "Go to Panel 1",
+          "panelId": "panel-1"
+        }
+      ]
+    }
+  }
+}

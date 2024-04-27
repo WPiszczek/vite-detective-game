@@ -1,5 +1,6 @@
-import { FC, useState } from "react";
+import { FC, useContext } from "react";
 
+import { GameContext } from "../../features/game/context";
 import {
   Button,
   ButtonsWrapper,
@@ -7,6 +8,7 @@ import {
   TitleWrapper,
   Wrapper
 } from "./Main.styles";
+import { useNavigate } from "react-router";
 
 const games = [
   { name: "Story 1", filename: "story1.json" },
@@ -14,13 +16,13 @@ const games = [
 ];
 
 const Main: FC = () => {
-  const [json, setJson] = useState({});
+  const { loadGameFromJson } = useContext(GameContext);
+  const navigate = useNavigate();
 
-  const loadJson = (filename: string) => {
-    // TODO LoadJson
+  const loadGame = async (filename: string) => {
+    await loadGameFromJson(filename);
+    navigate("/game");
   };
-
-  console.log(json);
 
   return (
     <Wrapper>
@@ -29,7 +31,9 @@ const Main: FC = () => {
       </TitleWrapper>
       <ButtonsWrapper>
         {games.map((game) => (
-          <Button onClick={() => loadJson(game.filename)}>{game.name}</Button>
+          <Button key={game.filename} onClick={() => loadGame(game.filename)}>
+            {game.name}
+          </Button>
         ))}
       </ButtonsWrapper>
     </Wrapper>

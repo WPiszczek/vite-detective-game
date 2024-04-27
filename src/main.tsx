@@ -5,11 +5,14 @@ import { ThemeProvider } from "styled-components";
 import { theme } from "./features/theme";
 import { App } from "./views";
 import "./index.css";
+import { GameProvider } from "./features/game/context";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <GameProvider>
+        <App />
+      </GameProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
