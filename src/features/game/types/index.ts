@@ -1,13 +1,13 @@
 type ImageFilename = string;
 
 export interface Game {
-  name: string;
+  title: string;
   startingPanelId: string;
   storyPanels: Record<string, StoryPanel>;
 }
 
 export interface StoryPanel {
-  name: string;
+  title: string;
   content: string;
   background: ImageFilename;
   actions: StoryPanelAction[];
@@ -15,6 +15,6 @@ export interface StoryPanel {
 
 export interface StoryPanelAction {
   id: string;
-  name: string;
+  title: string;
   panelId: string;
 }

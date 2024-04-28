@@ -1,24 +1,41 @@
 import { FC, useContext } from "react";
-import { StoryPanelProps } from "./StoryPanel.types";
-import { GameContext } from "../../context";
+
 import { getImage } from "../../../common/utils";
 import { HtmlRenderer } from "../../../common/components";
-import { ContentWrapper, BackgroundImg, Wrapper } from "./StoryPanel.styles";
+import { GameContext } from "../../context";
+import {
+  ContentWrapper,
+  BackgroundImg,
+  Wrapper,
+  Title,
+  ActionsWrapper,
+  Action
+} from "./StoryPanel.styles";
+import { StoryPanelProps } from "./StoryPanel.types";
 
 const StoryPanel: FC<StoryPanelProps> = ({ panelId }) => {
-  const { getStoryPanelById, getStartingPanelId } = useContext(GameContext);
+  const { getCurrentPanel, setCurrentPanel } = useContext(GameContext);
 
-  const panel = getStoryPanelById(panelId ?? getStartingPanelId());
+  if (!panelId) return <div>Loading</div>;
+  const panel = getCurrentPanel();
+
+  console.log("panel", panel);
 
   return (
     <Wrapper>
       <BackgroundImg src={getImage(panel.background)} />
       <ContentWrapper>
-        <div>{panel.name}</div>
-        <div>
-          <HtmlRenderer htmlContent={panel.content} />
-        </div>
-        {/* TODO: actions */}
+        <Title>{panel.title}</Title>
+        <HtmlRenderer htmlContent={panel.content} />
+        <ActionsWrapper>
+          {panel.actions.map((action) => (
+            <Action
+              key={action.id}
+              onClick={() => setCurrentPanel(action.panelId)}>
+              {action.title}
+            </Action>
+          ))}
+        </ActionsWrapper>
       </ContentWrapper>
     </Wrapper>
   );

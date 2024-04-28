@@ -12,9 +12,9 @@ const Game: FC = () => {
 
   return (
     <Wrapper>
-      <Header>{game.name}</Header>
+      <Header>{game.title}</Header>
       <Content>
-        {game?.startingPanelId && <StoryPanel panelId={game.startingPanelId} />}
+        {isGameLoaded && <StoryPanel panelId={game.startingPanelId} />}
       </Content>
     </Wrapper>
   );

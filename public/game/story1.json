@@ -1,45 +1,50 @@
 {
-  "name": "Story 1",
+  "title": "Story 1",
   "startingPanelId": "panel-0",
   "storyPanels": {
     "panel-0": {
-      "name": "Panel 0",
+      "title": "Panel 0",
       "content": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur placerat, mi nec tempus congue, tellus nulla vehicula erat, nec blandit risus libero quis risus. Vivamus sapien turpis, euismod id aliquam non, consectetur at ante. Nullam sed condimentum urna. Fusce varius tempus interdum. Nam pellentesque dolor id justo molestie, sit amet rhoncus neque iaculis. Ut ornare luctus velit, ut placerat mi blandit non. Duis nec sem tellus. Donec placerat ullamcorper ligula eu mollis.</p><p>Donec eu rhoncus tortor, sodales hendrerit urna. Aliquam vel pulvinar arcu, id scelerisque lorem. Aliquam at lacus porta, pellentesque nulla a, blandit libero. Morbi molestie augue a rutrum tempor. Vestibulum fringilla ante id mi tempus, sed posuere mi semper. Nam interdum sodales augue. Nam vel sem lectus.</p><p>Morbi vulputate, risus non hendrerit auctor, nisl nibh eleifend nibh, nec dapibus ante libero et tellus. Phasellus sed magna vitae purus scelerisque laoreet non non eros. Nam blandit non dolor a semper. Sed semper ultricies porttitor. Integer non tincidunt nisl. Quisque ornare mattis nibh. Proin a ante enim. Nulla pulvinar orci quis odio aliquet congue. Donec non ante neque. Ut rutrum aliquam nisl, eu faucibus tortor eleifend quis. Fusce vel ex magna. Donec fermentum in enim eget tristique. Sed in nibh ac nunc pellentesque vehicula gravida ut purus. Phasellus non nibh urna. Duis blandit ac ligula et rutrum.</p>",
       "background": "panel0.jpg",
       "actions": [
         {
           "id": "action-1",
-          "content": "Go to Panel 1",
+          "title": "Go to Panel 1",
           "panelId": "panel-1"
         },
         {
           "id": "action-2",
-          "content": "Go to Panel 2",
+          "title": "Go to Panel 2",
           "panelId": "panel-2"
         }
       ]
     },
     "panel-1": {
-      "name": "Panel 1",
-      "content": "Content of Panel 1",
+      "title": "Panel 1",
+      "content": "<p>Proin eros ex, feugiat sit amet justo at, porttitor dictum arcu. Aenean egestas aliquet euismod. Sed venenatis congue orci, id vestibulum leo finibus sit amet. Maecenas imperdiet dapibus libero, sit amet sagittis dolor auctor vitae. Morbi accumsan placerat turpis eget malesuada. Sed volutpat commodo aliquam. Praesent tristique massa id tortor rhoncus, ut porta lorem pretium. Sed nec cursus sapien, at efficitur risus. Donec sed arcu finibus, placerat risus nec, efficitur risus.</p><p>Aenean non dapibus lectus. Nam eros nibh, eleifend id condimentum in, tincidunt in odio. Pellentesque tincidunt dui diam, nec facilisis nunc pretium vitae. Phasellus porttitor purus venenatis risus tristique, quis ornare massa facilisis. Nullam lacus odio, molestie eget nisi et, aliquet pharetra justo. Maecenas nec congue tortor, eu lacinia quam. Integer luctus varius venenatis. Proin nec semper mauris, congue posuere enim. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam ac rutrum nibh. Mauris et est molestie, venenatis nibh at, lacinia odio. Sed facilisis viverra est. Cras ac sem facilisis, consectetur dui at, sodales odio. Maecenas vitae augue quis enim pretium lacinia eget sed odio. Nullam varius semper arcu in suscipit.</p>",
       "background": "panel1.jpg",
       "actions": [
         {
           "id": "action-1",
-          "content": "Go to Panel 2",
+          "title": "Go to Panel 2",
           "panelId": "panel-2"
         }
       ]
     },
     "panel-2": {
-      "name": "Panel 2",
-      "content": "Content of Panel 2",
+      "title": "Panel 2",
+      "content": "<p>Suspendisse semper sapien et tellus dignissim fermentum. Integer viverra est vehicula varius mattis. Aliquam placerat mauris vel purus gravida, ut placerat mauris convallis. Nam varius bibendum libero, non rhoncus est. Vestibulum venenatis metus in ipsum ultrices interdum. Morbi auctor ex quam, sit amet tristique tellus aliquam nec. Ut sit amet neque diam. Aliquam ipsum mauris, tincidunt quis molestie nec, posuere ut turpis. Nulla ac massa orci. Proin rhoncus ultricies pellentesque. Phasellus enim ex, ultrices vel arcu scelerisque, sollicitudin viverra est. Aenean et porttitor turpis. Suspendisse nec ligula justo. Nullam dui erat, vulputate sit amet ultricies id, sodales in elit.</p><p>Donec sed elit quis ex scelerisque pharetra id non nibh. Vivamus nibh turpis, aliquam vitae dignissim molestie, lacinia vel dui. Nam interdum metus ut lorem aliquet vestibulum. Nulla hendrerit eleifend lacus varius dignissim. Aliquam erat volutpat. Quisque sed urna libero. Fusce condimentum congue luctus. Sed ipsum lorem, aliquet sed sem a, vulputate sodales lorem. Mauris congue ex leo, sed maximus mi lacinia at. Praesent felis nulla, viverra non sollicitudin in, efficitur vel lectus. Fusce placerat tortor vel massa tincidunt sodales. Fusce ac libero maximus, scelerisque est sit amet, pellentesque neque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis commodo sapien eu eros facilisis porttitor</p>",
       "background": "panel2.jpg",
       "actions": [
         {
           "id": "action-1",
-          "content": "Go to Panel 1",
+          "title": "Go to Panel 1",
           "panelId": "panel-1"
+        },
+        {
+          "id": "action-2",
+          "title": "Go to Panel 0",
+          "panelId": "panel-0"
         }
       ]
     }

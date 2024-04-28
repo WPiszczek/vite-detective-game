@@ -1,14 +1,9 @@
 import { FC, useContext } from "react";
-
-import { GameContext } from "../../features/game/context";
-import {
-  Button,
-  ButtonsWrapper,
-  Title,
-  TitleWrapper,
-  Wrapper
-} from "./Main.styles";
 import { useNavigate } from "react-router";
+
+import { Button } from "../../features/common/components";
+import { GameContext } from "../../features/game/context";
+import { ButtonsWrapper, Title, TitleWrapper, Wrapper } from "./Main.styles";
 
 const games = [
   { name: "Story 1", filename: "story1.json" },
