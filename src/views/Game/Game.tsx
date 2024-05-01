@@ -3,18 +3,23 @@ import { Navigate } from "react-router";
 
 import { StoryPanel } from "../../features/game/components";
 import { GameContext } from "../../features/game/context";
-import { Content, Header, Wrapper } from "./Game.styles";
+import { SearchPanel } from "../../features/search/components";
+import { Content, Header, Title, Wrapper } from "./Game.styles";
 
 const Game: FC = () => {
-  const { isGameLoaded, game } = useContext(GameContext);
+  const { isGameLoaded, game, getCurrentPanelBackgroundImg } =
+    useContext(GameContext);
 
   if (!isGameLoaded) return <Navigate to={"/"} />;
 
   return (
-    <Wrapper>
-      <Header>{game.title}</Header>
+    <Wrapper $img={getCurrentPanelBackgroundImg()}>
+      <Header>
+        <Title>{game.title}</Title>
+      </Header>
       <Content>
-        {isGameLoaded && <StoryPanel panelId={game.startingPanelId} />}
+        <StoryPanel />
+        <SearchPanel />
       </Content>
     </Wrapper>
   );

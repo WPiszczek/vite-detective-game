@@ -22,7 +22,33 @@ body,
   padding: 0;
   height: 100vh;
   background-color: #d3d9d4;
+  /* scrollbar-width: none; */
 }
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #c0c4c7;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #eaebec;
+  cursor: pointer;
+}
+
+/* ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+} */
 
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 

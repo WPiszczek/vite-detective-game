@@ -1,6 +1,7 @@
 import { FC, ReactNode, createContext, useState } from "react";
 
 import { Game, StoryPanel } from "../types";
+import { getImage } from "../../common/utils";
 
 export const GameContext = createContext<{
   game: Game;
@@ -10,6 +11,7 @@ export const GameContext = createContext<{
   getStartingPanelId: () => string;
   getPanelById: (id: string) => StoryPanel;
   getCurrentPanel: () => StoryPanel;
+  getCurrentPanelBackgroundImg: () => string;
   setCurrentPanel: (id: string) => void;
 }>(null);
 
@@ -46,6 +48,10 @@ export const GameProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setCurrentPanelId(id);
   };
 
+  const getCurrentPanelBackgroundImg = () => {
+    return getImage(game.storyPanels[currentPanelId].background);
+  };
+
   return (
     <GameContext.Provider
       value={{
@@ -56,6 +62,7 @@ export const GameProvider: FC<{ children: ReactNode }> = ({ children }) => {
         getStartingPanelId,
         getPanelById,
         getCurrentPanel,
+        getCurrentPanelBackgroundImg,
         setCurrentPanel
       }}>
       {children}
