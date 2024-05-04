@@ -3,7 +3,7 @@ import { Navigate } from "react-router";
 
 import { StoryPanel } from "../../features/game/components";
 import { GameContext } from "../../features/game/context";
-import { SearchPanel } from "../../features/search/components";
+import { FactsPanel } from "../../features/facts/components";
 import { Content, Header, Title, Wrapper } from "./Game.styles";
 
 const Game: FC = () => {
@@ -19,7 +19,7 @@ const Game: FC = () => {
       </Header>
       <Content>
         <StoryPanel />
-        <SearchPanel />
+        <FactsPanel />
       </Content>
     </Wrapper>
   );

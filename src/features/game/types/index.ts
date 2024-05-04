@@ -1,9 +1,12 @@
+import { Facts } from "../../facts/types";
+
 type ImageFilename = string;
 
 export interface Game {
   title: string;
   startingPanelId: string;
   storyPanels: Record<string, StoryPanel>;
+  facts: Facts;
 }
 
 export interface StoryPanel {

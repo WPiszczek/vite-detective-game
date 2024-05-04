@@ -2,11 +2,13 @@ import { FC, ReactNode, createContext, useState } from "react";
 
 import { Game, StoryPanel } from "../types";
 import { getImage } from "../../common/utils";
+import { Facts } from "../../facts/types";
 
 export const GameContext = createContext<{
   game: Game;
   isGameLoaded: boolean;
   currentPanelId: string;
+  facts: Facts;
   loadGameFromJson: (filename: string) => Promise<void>;
   getStartingPanelId: () => string;
   getPanelById: (id: string) => StoryPanel;
@@ -19,6 +21,7 @@ export const GameProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [game, setGame] = useState<Game>({} as Game);
   const [isGameLoaded, setIsGameLoaded] = useState(false);
   const [currentPanelId, setCurrentPanelId] = useState(game?.startingPanelId);
+  const [facts, setFacts] = useState(game?.facts);
 
   const loadGameFromJson = async (filename: string) => {
     try {
@@ -26,6 +29,7 @@ export const GameProvider: FC<{ children: ReactNode }> = ({ children }) => {
       const json = await response.json();
       setGame(json);
       setCurrentPanelId(json?.startingPanelId);
+      setFacts(json?.facts);
       setIsGameLoaded(true);
     } catch (e) {
       console.error(e);
@@ -58,6 +62,7 @@ export const GameProvider: FC<{ children: ReactNode }> = ({ children }) => {
         game,
         isGameLoaded,
         currentPanelId,
+        facts,
         loadGameFromJson,
         getStartingPanelId,
         getPanelById,

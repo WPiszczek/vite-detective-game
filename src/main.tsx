@@ -6,15 +6,15 @@ import { theme } from "./features/theme";
 import { App } from "./views";
 import "./index.css";
 import { GameProvider } from "./features/game/context";
-import { SearchProvider } from "./features/search/context";
+import { FactsProvider } from "./features/facts/context";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <GameProvider>
-        <SearchProvider>
+        <FactsProvider>
           <App />
-        </SearchProvider>
+        </FactsProvider>
       </GameProvider>
     </ThemeProvider>
   </React.StrictMode>
