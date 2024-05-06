@@ -1,17 +1,43 @@
-import { FC, useContext } from "react";
+import { ChangeEvent, FC, useContext, useState } from "react";
+
 import { FactsContext } from "../../context";
+import Fact from "../Fact";
+import {
+  CheckButton,
+  FactsWrapper,
+  SearchInput,
+  SearchInputWrapper,
+  Wrapper
+} from "./FactsPanel.styles";
 
 const FactsPanel: FC = () => {
-  const { facts, getFoundFacts } = useContext(FactsContext);
+  const { getFoundFacts, areSomeFactsChecked } = useContext(FactsContext);
+  const [searchText, setSearchText] = useState("");
 
-  console.log("facts", facts);
+  const handleSearchText = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchText(e.target.value);
+  };
+
   return (
-    <div>
-      <div>FactsPanel</div>
-      {getFoundFacts().map((fact) => (
-        <div>{fact.title}</div>
-      ))}
-    </div>
+    <Wrapper>
+      <SearchInputWrapper>
+        <SearchInput
+          placeholder={"Search found facts here"}
+          value={searchText}
+          onChange={handleSearchText}
+        />
+      </SearchInputWrapper>
+      {areSomeFactsChecked() && (
+        <CheckButton onClick={() => console.log("cllick")}>
+          Check connection
+        </CheckButton>
+      )}
+      <FactsWrapper>
+        {getFoundFacts().map((fact) => (
+          <Fact key={fact.id} fact={fact} />
+        ))}
+      </FactsWrapper>
+    </Wrapper>
   );
 };
 

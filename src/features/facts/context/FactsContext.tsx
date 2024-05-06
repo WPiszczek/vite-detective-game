@@ -8,11 +8,13 @@ import {
 } from "react";
 
 import { GameContext } from "../../game/context";
-import { Fact, Facts } from "../types";
+import { FactWithId, Facts } from "../types";
 
 export const FactsContext = createContext<{
   facts: Facts;
-  getFoundFacts: () => Fact[];
+  getFoundFacts: () => FactWithId[];
+  toggleFactChecked: (id: string) => void;
+  areSomeFactsChecked: () => boolean;
 }>(null);
 
 export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -44,18 +46,34 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
           panelId: fact.panelId,
           title: fact.title,
           description: fact.description,
-          isFound: fact.isFound || false
-        } as Fact);
+          isFound: fact.isFound || false,
+          isChecked: fact.isChecked || false
+        } as FactWithId);
       }
       return acc;
-    }, [] as Fact[]);
+    }, [] as FactWithId[]);
   };
+
+  const toggleFactChecked = (id: string) => {
+    setFacts((prev) => ({
+      ...prev,
+      [id]: {
+        ...prev[id],
+        isChecked: !prev[id]?.isChecked || false
+      }
+    }));
+  };
+
+  const areSomeFactsChecked = () =>
+    getFoundFacts().some((fact) => fact.isChecked);
 
   return (
     <FactsContext.Provider
       value={{
         facts,
-        getFoundFacts
+        getFoundFacts,
+        toggleFactChecked,
+        areSomeFactsChecked
       }}>
       {children}
     </FactsContext.Provider>

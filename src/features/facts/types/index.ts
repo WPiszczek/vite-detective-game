@@ -10,6 +10,9 @@ export interface Fact {
   panelId?: string;
   requiredFacts?: string[];
   isFound: boolean;
+  isChecked?: boolean;
 }
+
+export type FactWithId = Fact & { id: string };
 
 export type Facts = Record<string, Fact>;

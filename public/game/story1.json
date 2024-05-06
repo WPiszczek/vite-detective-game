@@ -53,61 +53,51 @@
     "fact-1": {
       "panelId": "panel-0",
       "title": "Fact 1",
-      "description": "Description of Fact 1",
-      "isFound": false
+      "description": "Description of Fact 1"
     },
     "fact-2": {
       "panelId": "panel-0",
       "title": "Fact 2",
-      "description": "Description of Fact 2",
-      "isFound": false
+      "description": "Description of Fact 2"
     },
     "fact-3": {
       "panelId": "panel-1",
       "title": "Fact 3",
-      "description": "Description of Fact 3",
-      "isFound": false
+      "description": "Description of Fact 3"
     },
     "fact-4": {
       "panelId": "panel-2",
       "title": "Fact 4",
-      "description": "Description of Fact 4",
-      "isFound": false
+      "description": "Description of Fact 4"
     },
     "fact-5": {
       "panelId": "panel-2",
       "title": "Fact 5",
-      "description": "Description of Fact 5",
-      "isFound": false
+      "description": "Description of Fact 5"
     },
     "fact-6": {
       "panelId": "panel-2",
       "title": "Fact 6",
-      "description": "Description of Fact 6",
-      "isFound": false
+      "description": "Description of Fact 6"
     },
     "fact-7": {
       "title": "Fact 7",
       "description": "Description of Fact 7",
-      "isFound": false,
       "requiredFacts": ["fact-4", "fact-5"]
     },
     "fact-8": {
       "title": "Fact 8",
       "description": "Description of Fact 8",
-      "isFound": false,
       "requiredFacts": ["fact-1", "fact-3", "fact-6"]
     },
     "fact-9": {
       "title": "Fact 9",
       "description": "Description of Fact 9",
-      "isFound": false,
       "requiredFacts": ["fact-3", "fact-7"]
     },
     "fact-10": {
       "title": "Fact 10",
       "description": "Description of Fact 10",
-      "isFound": false,
       "requiredFacts": ["fact-8", "fact-9"]
     }
   }
