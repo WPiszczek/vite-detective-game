@@ -42,7 +42,6 @@ body,
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #eaebec;
-  cursor: pointer;
 }
 
 /* ::-webkit-scrollbar {

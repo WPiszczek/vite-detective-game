@@ -5,17 +5,26 @@ import Fact from "../Fact";
 import {
   CheckButton,
   FactsWrapper,
+  SearchButton,
+  SearchIcon,
   SearchInput,
   SearchInputWrapper,
   Wrapper
 } from "./FactsPanel.styles";
 
 const FactsPanel: FC = () => {
-  const { getFoundFacts, areSomeFactsChecked } = useContext(FactsContext);
-  const [searchText, setSearchText] = useState("");
+  const {
+    searchResults,
+    searchFacts,
+    areSomeFactsChecked,
+    checkFactConnection
+  } = useContext(FactsContext);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const handleSearchText = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchText(e.target.value);
+  console.log("search", searchResults);
+
+  const handleSearchQuery = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
   };
 
   return (
@@ -23,17 +32,20 @@ const FactsPanel: FC = () => {
       <SearchInputWrapper>
         <SearchInput
           placeholder={"Search found facts here"}
-          value={searchText}
-          onChange={handleSearchText}
+          value={searchQuery}
+          onChange={handleSearchQuery}
         />
+        <SearchButton onClick={() => searchFacts(searchQuery)}>
+          <SearchIcon />
+        </SearchButton>
       </SearchInputWrapper>
-      {areSomeFactsChecked() && (
-        <CheckButton onClick={() => console.log("cllick")}>
-          Check connection
-        </CheckButton>
-      )}
+      <CheckButton
+        onClick={() => checkFactConnection()}
+        disabled={!areSomeFactsChecked()}>
+        Check fact connection
+      </CheckButton>
       <FactsWrapper>
-        {getFoundFacts().map((fact) => (
+        {searchResults.map((fact) => (
           <Fact key={fact.id} fact={fact} />
         ))}
       </FactsWrapper>

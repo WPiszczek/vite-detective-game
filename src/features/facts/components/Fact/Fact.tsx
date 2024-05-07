@@ -13,11 +13,11 @@ import {
   Wrapper
 } from "./Fact.styles";
 
-const getCheckColor = (isChecked = false) =>
-  isChecked ? colors.green : colors.veryLightGrey;
-
 const Fact: FC<FactProps> = ({ fact }) => {
-  const { toggleFactChecked } = useContext(FactsContext);
+  const { isFactChecked, toggleFactChecked } = useContext(FactsContext);
+
+  const getCheckColor = () =>
+    isFactChecked(fact.id) ? colors.green : colors.veryLightGrey;
 
   return (
     <Wrapper>
@@ -25,7 +25,7 @@ const Fact: FC<FactProps> = ({ fact }) => {
         <Title>{fact.title}</Title>
         <ButtonsWrapper>
           <CheckButton onClick={() => toggleFactChecked(fact.id)}>
-            <CheckIcon color={getCheckColor(fact?.isChecked)} />
+            <CheckIcon color={getCheckColor()} />
           </CheckButton>
         </ButtonsWrapper>
       </Header>
