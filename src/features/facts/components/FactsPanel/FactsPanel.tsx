@@ -1,9 +1,10 @@
 import { ChangeEvent, FC, useContext, useState } from "react";
 
 import { FactsContext } from "../../context";
-import Fact from "../Fact";
+import { Fact } from "..";
 import {
   CheckButton,
+  CheckButtonWrapper,
   FactsWrapper,
   SearchButton,
   SearchIcon,
@@ -21,8 +22,6 @@ const FactsPanel: FC = () => {
   } = useContext(FactsContext);
   const [searchQuery, setSearchQuery] = useState("");
 
-  console.log("search", searchResults);
-
   const handleSearchQuery = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
@@ -39,11 +38,13 @@ const FactsPanel: FC = () => {
           <SearchIcon />
         </SearchButton>
       </SearchInputWrapper>
-      <CheckButton
-        onClick={() => checkFactConnection()}
-        disabled={!areSomeFactsChecked()}>
-        Check fact connection
-      </CheckButton>
+      <CheckButtonWrapper>
+        <CheckButton
+          onClick={() => checkFactConnection()}
+          disabled={!areSomeFactsChecked()}>
+          Check facts combination
+        </CheckButton>
+      </CheckButtonWrapper>
       <FactsWrapper>
         {searchResults.map((fact) => (
           <Fact key={fact.id} fact={fact} />

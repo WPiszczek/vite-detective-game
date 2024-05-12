@@ -17,5 +17,6 @@ export const colors = {
   darkBlue: "#0b2f3d",
   veryDarkBlue: "#05171f",
 
-  green: "#009900"
+  green: "#009900",
+  gold: "#b39700"
 };

@@ -10,6 +10,15 @@ import lunr from "lunr";
 
 import { GameContext } from "../../game/context";
 import { FactWithId, Facts } from "../types";
+import {
+  showFailNotification,
+  showInfoNotification,
+  showSuccessNotification
+} from "../utils";
+import {
+  ArrayDifference,
+  checkArrayDifference
+} from "../utils/checkArrayDifference";
 
 const defaultSearchIndex = lunr(function () {
   this.field("title");
@@ -19,24 +28,28 @@ const defaultSearchIndex = lunr(function () {
 export const FactsContext = createContext<{
   facts: Facts;
   searchResults: FactWithId[];
+  isStoryFinished: boolean;
   searchFacts: (query: string) => void;
   getFoundFacts: () => FactWithId[];
   toggleFactChecked: (id: string) => void;
   isFactChecked: (id: string) => boolean;
   areSomeFactsChecked: () => boolean;
-  checkFactConnection: () => string[];
+  checkFactConnection: () => void;
 }>(null);
 
 export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { game, currentPanelId } = useContext(GameContext);
   const [facts, setFacts] = useState<Facts>(game?.facts);
   const [foundFactsIds, setFoundFactsIds] = useState<string[]>([]);
+  const [finalFactId, setFinalFactId] = useState(game?.finalFactId);
+  const [isStoryFinished, setIsStoryFinished] = useState(false);
 
   const [searchResults, setSearchResults] = useState<FactWithId[]>([]);
   const [searchIndex, setSearchIndex] = useState(defaultSearchIndex);
 
   useEffect(() => {
     setFacts(game.facts);
+    setFinalFactId(game.finalFactId);
   }, [game]);
 
   useEffect(() => {
@@ -90,6 +103,12 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }));
   };
 
+  const toggleStoryFinished = () => {
+    setIsStoryFinished((prev) => !prev);
+  };
+
+  const isFinalFact = (id: string) => id === finalFactId;
+
   const isFactChecked = (id: string) => facts[id]?.isChecked ?? false;
 
   const areSomeFactsChecked = () =>
@@ -102,22 +121,54 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
       return [];
     }
 
+    let differenceStates: ArrayDifference[] = [];
     const newFactsIds = Object.keys(facts).filter((key) => {
       const fact = facts[key];
       if (!fact.requiredFacts || fact.isFound) return false;
       const requiredFactsIds = fact.requiredFacts;
-      return (
-        requiredFactsIds.length === checkedFactsIds.length &&
-        requiredFactsIds.every((id) => checkedFactsIds.includes(id)) &&
-        checkedFactsIds.every((id) => requiredFactsIds.includes(id))
+
+      const result = checkArrayDifference(
+        checkedFactsIds,
+        requiredFactsIds,
+        foundFactsIds
       );
+      differenceStates.push(result);
+      return result === ArrayDifference.IDENTICAL;
     });
 
     if (newFactsIds.length > 0) {
       setFoundFactsIds((prev) => [...prev, ...newFactsIds]);
+      setNewFoundFacts(newFactsIds);
+      const factTitles = newFactsIds.map((id) => facts[id].title);
+      showSuccessNotification(factTitles);
       resetCheckedFacts();
+
+      newFactsIds.forEach((id) => {
+        if (isFinalFact(id)) {
+          console.log("finished", id);
+          toggleStoryFinished();
+          return;
+        }
+      });
+      return;
     }
-    return newFactsIds;
+
+    if (differenceStates.includes(ArrayDifference.ONE_WRONG)) {
+      showInfoNotification("One of checked facts is wrong here.");
+      return;
+    }
+
+    if (differenceStates.includes(ArrayDifference.ONE_TOO_MUCH)) {
+      showInfoNotification("Try using one less fact.");
+      return;
+    }
+
+    if (differenceStates.includes(ArrayDifference.ONE_MISSING)) {
+      showInfoNotification("One fact is missing.");
+      return;
+    }
+
+    showFailNotification();
   };
 
   const resetCheckedFacts = () => {
@@ -125,6 +176,19 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
       const nextState = { ...prev };
       for (let key in nextState) {
         nextState[key].isChecked = false;
+      }
+      return nextState;
+    });
+  };
+
+  const setNewFoundFacts = (newFactsIds: string[]) => {
+    setFacts((prev) => {
+      const nextState = { ...prev };
+      for (let key in newFactsIds) {
+        nextState[key] = {
+          ...nextState[key],
+          isFound: true
+        };
       }
       return nextState;
     });
@@ -144,6 +208,7 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
       value={{
         facts,
         searchResults,
+        isStoryFinished,
         searchFacts,
         getFoundFacts,
         toggleFactChecked,

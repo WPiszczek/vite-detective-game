@@ -1,9 +1,11 @@
 Vite Detective Game
 
 To run:
+
 - npm install
 - npm run dev
 
-TODO: 
-- feedback on checking fact connection
-- ending game
+TODO:
+
+- adding option to change searching type
+- second story

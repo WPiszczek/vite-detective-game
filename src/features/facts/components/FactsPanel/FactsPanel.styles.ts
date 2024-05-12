@@ -8,17 +8,14 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 30px;
-
-  overflow-y: auto;
-  min-height: calc(100vh - 60px - 61px); // header height + padding top/bottom
-  max-height: calc(100vh - 60px - 61px); // header height + padding top/bottom
+  padding: 30px 0;
 `;
 
 export const SearchInputWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 20px;
+  padding: 0 30px;
 `;
 
 export const SearchInput = styled.input.attrs({
@@ -62,9 +59,14 @@ export const SearchIcon = styled(SearchIcon_Unstyled).attrs({
   height: 30
 })``;
 
+export const CheckButtonWrapper = styled.div`
+  padding: 0 30px;
+`;
+
 export const CheckButton = styled(Button)`
   opacity: 0.7;
   padding: 5px;
+  width: 100%;
 
   &:disabled {
     &:hover {
@@ -78,4 +80,13 @@ export const FactsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  padding: 0 30px;
+
+  overflow-y: auto;
+  min-height: calc(
+    100vh - 60px - 61px - 135px
+  ); // header height + padding top/bottom + height of search field
+  max-height: calc(
+    100vh - 60px - 61px - 135px
+  ); // header height + padding top/bottom + height of search field
 `;

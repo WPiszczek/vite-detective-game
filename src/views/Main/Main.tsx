@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import { Button } from "../../features/common/components";
 import { GameContext } from "../../features/game/context";
 import { ButtonsWrapper, Title, TitleWrapper, Wrapper } from "./Main.styles";
+import { getImage } from "../../features/common/utils";
 
 const games = [
   { name: "Story 1", filename: "story1.json" },
@@ -20,7 +21,7 @@ const Main: FC = () => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper $img={getImage("background.webp")}>
       <TitleWrapper>
         <Title>Choose the game:</Title>
       </TitleWrapper>
