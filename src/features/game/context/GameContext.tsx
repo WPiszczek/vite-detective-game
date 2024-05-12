@@ -15,7 +15,18 @@ export const GameContext = createContext<{
   getCurrentPanel: () => StoryPanel;
   getCurrentPanelBackgroundImg: () => string;
   setCurrentPanel: (id: string) => void;
-}>(null);
+}>({
+  game: {} as Game,
+  isGameLoaded: false,
+  currentPanelId: "",
+  facts: {},
+  loadGameFromJson: async () => {},
+  getStartingPanelId: () => "",
+  getPanelById: () => ({} as StoryPanel),
+  getCurrentPanel: () => ({} as StoryPanel),
+  getCurrentPanelBackgroundImg: () => "",
+  setCurrentPanel: () => {}
+});
 
 export const GameProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [game, setGame] = useState<Game>({} as Game);

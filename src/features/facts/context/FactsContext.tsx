@@ -35,7 +35,17 @@ export const FactsContext = createContext<{
   isFactChecked: (id: string) => boolean;
   areSomeFactsChecked: () => boolean;
   checkFactConnection: () => void;
-}>(null);
+}>({
+  facts: {},
+  searchResults: [],
+  isStoryFinished: false,
+  searchFacts: () => {},
+  getFoundFacts: () => [],
+  toggleFactChecked: () => {},
+  isFactChecked: () => false,
+  areSomeFactsChecked: () => false,
+  checkFactConnection: () => {}
+});
 
 export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { game, currentPanelId } = useContext(GameContext);
