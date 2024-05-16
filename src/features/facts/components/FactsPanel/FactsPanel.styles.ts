@@ -8,14 +8,14 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 30px 0;
+  padding: 30px 0 30px 30px;
 `;
 
 export const SearchInputWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   gap: 20px;
-  padding: 0 30px;
+  min-height: 35px;
 `;
 
 export const SearchInput = styled.input.attrs({
@@ -26,7 +26,6 @@ export const SearchInput = styled.input.attrs({
   color: ${({ theme }) => theme.colors.veryDarkBlue};
   padding: 5px;
   width: 100%;
-
   &::placeholder {
     color: ${({ theme }) => theme.colors.blue};
   }
@@ -59,9 +58,7 @@ export const SearchIcon = styled(SearchIcon_Unstyled).attrs({
   height: 30
 })``;
 
-export const CheckButtonWrapper = styled.div`
-  padding: 0 30px;
-`;
+export const CheckButtonWrapper = styled.div``;
 
 export const CheckButton = styled(Button)`
   opacity: 0.7;
@@ -80,7 +77,6 @@ export const FactsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 0 30px;
 
   overflow-y: auto;
   min-height: calc(

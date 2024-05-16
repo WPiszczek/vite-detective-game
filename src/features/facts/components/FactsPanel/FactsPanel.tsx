@@ -1,5 +1,6 @@
-import { ChangeEvent, FC, useContext, useState } from "react";
+import { ChangeEvent, FC, useContext, useEffect, useState } from "react";
 
+import { GameContext } from "../../../game/context";
 import { FactsContext } from "../../context";
 import { Fact } from "..";
 import {
@@ -15,15 +16,22 @@ import {
 
 const FactsPanel: FC = () => {
   const {
+    isFullTextSearch,
     searchResults,
     searchFacts,
     areSomeFactsChecked,
     checkFactConnection
   } = useContext(FactsContext);
+  const { currentPanelId } = useContext(GameContext);
   const [searchQuery, setSearchQuery] = useState("");
+
+  useEffect(() => {
+    setSearchQuery("");
+  }, [currentPanelId]);
 
   const handleSearchQuery = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
+    if (!isFullTextSearch) searchFacts(e.target.value);
   };
 
   return (
@@ -34,9 +42,11 @@ const FactsPanel: FC = () => {
           value={searchQuery}
           onChange={handleSearchQuery}
         />
-        <SearchButton onClick={() => searchFacts(searchQuery)}>
-          <SearchIcon />
-        </SearchButton>
+        {isFullTextSearch && (
+          <SearchButton onClick={() => searchFacts(searchQuery)}>
+            <SearchIcon />
+          </SearchButton>
+        )}
       </SearchInputWrapper>
       <CheckButtonWrapper>
         <CheckButton

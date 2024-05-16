@@ -29,9 +29,11 @@ export const FactsContext = createContext<{
   facts: Facts;
   searchResults: FactWithId[];
   isStoryFinished: boolean;
+  isFullTextSearch: boolean;
   searchFacts: (query: string) => void;
   getFoundFacts: () => FactWithId[];
   toggleFactChecked: (id: string) => void;
+  toggleFullTextSearch: () => void;
   isFactChecked: (id: string) => boolean;
   areSomeFactsChecked: () => boolean;
   checkFactConnection: () => void;
@@ -39,9 +41,11 @@ export const FactsContext = createContext<{
   facts: {},
   searchResults: [],
   isStoryFinished: false,
+  isFullTextSearch: false,
   searchFacts: () => {},
   getFoundFacts: () => [],
   toggleFactChecked: () => {},
+  toggleFullTextSearch: () => {},
   isFactChecked: () => false,
   areSomeFactsChecked: () => false,
   checkFactConnection: () => {}
@@ -53,6 +57,7 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [foundFactsIds, setFoundFactsIds] = useState<string[]>([]);
   const [finalFactId, setFinalFactId] = useState(game?.finalFactId);
   const [isStoryFinished, setIsStoryFinished] = useState(false);
+  const [isFullTextSearch, setIsFullTextSearch] = useState(false);
 
   const [searchResults, setSearchResults] = useState<FactWithId[]>([]);
   const [searchIndex, setSearchIndex] = useState(defaultSearchIndex);
@@ -205,12 +210,34 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
   };
 
   const searchFacts = (query: string) => {
+    const results = isFullTextSearch
+      ? searchFactsFullText(query)
+      : searchFactsDefault(query);
+    setSearchResults(results);
+  };
+
+  const searchFactsFullText = (query: string) => {
     const results = searchIndex.search(query.toLowerCase());
-    const mappedResults = results.map((element) => ({
+    return results.map((element) => ({
       ...facts[element.ref],
       id: element.ref
     }));
-    setSearchResults(mappedResults);
+  };
+
+  const searchFactsDefault = (query: string) => {
+    const facts = getFoundFacts();
+    if (query === "") return facts;
+
+    const results = facts.filter(
+      (fact) =>
+        fact.title.toLowerCase().includes(query) ||
+        fact.description.toLowerCase().includes(query)
+    );
+    return results;
+  };
+
+  const toggleFullTextSearch = () => {
+    setIsFullTextSearch((prev) => !prev);
   };
 
   return (
@@ -219,9 +246,11 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
         facts,
         searchResults,
         isStoryFinished,
+        isFullTextSearch,
         searchFacts,
         getFoundFacts,
         toggleFactChecked,
+        toggleFullTextSearch,
         isFactChecked,
         areSomeFactsChecked,
         checkFactConnection

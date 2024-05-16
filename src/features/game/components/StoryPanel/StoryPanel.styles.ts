@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Button } from "../../../common/components";
 
 export const Wrapper = styled.div`
-  padding: 20px 60px 40px 180px;
+  padding: 20px 60px 40px 0;
   font-weight: ${({ theme }) => theme.fontWeight.semiBold};
   color: ${({ theme }) => theme.colors.veryDarkBlue};
   overflow-y: auto;
