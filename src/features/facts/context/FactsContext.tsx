@@ -65,6 +65,7 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     setFacts(game.facts);
     setFinalFactId(game.finalFactId);
+    setIsStoryFinished(false);
   }, [game]);
 
   useEffect(() => {
@@ -160,7 +161,6 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
       newFactsIds.forEach((id) => {
         if (isFinalFact(id)) {
-          console.log("finished", id);
           toggleStoryFinished();
           return;
         }

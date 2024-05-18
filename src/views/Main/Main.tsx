@@ -8,7 +8,7 @@ import { getImage } from "../../features/common/utils";
 
 const games = [
   { name: "Story 1", filename: "story1.json" },
-  { name: "Story 2", filename: "story2.json" }
+  { name: "The Museum Heist", filename: "the-museum-heist.json" }
 ];
 
 const Main: FC = () => {

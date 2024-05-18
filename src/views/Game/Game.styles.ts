@@ -14,6 +14,7 @@ export const Wrapper = styled.div<{ $img: string }>`
     background-image: url(${({ $img }) => $img});
     background-attachment: fixed;
     background-position: 0 0;
+    background-size: cover;
     opacity: 0.5;
     position: absolute;
     pointer-events: none;

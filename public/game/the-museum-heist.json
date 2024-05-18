@@ -1,0 +1,132 @@
+{
+  "title": "The Museum Heist",
+  "startingPanelId": "panel-0",
+  "finalFactId": "fact-7",
+  "storyPanels": {
+    "panel-0": {
+      "title": "Entrance Hall",
+      "content": "<p>The grand entrance hall of the museum is filled with visitors. The detective stands near the information desk, observing the flow of people. It's the perfect place to start the investigation.</p><p>Two guards are discussing the recent thefts, providing a potential lead.</p>",
+      "background": "entrance-hall.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Talk to the Guards",
+          "panelId": "panel-1"
+        },
+        {
+          "id": "action-2",
+          "title": "Head to the Exhibition Room",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-1": {
+      "title": "Guards' Station",
+      "content": "<p>The guards explain that several items have been stolen from the museum recently. They mention a suspicious person seen near the modern art exhibit.</p><p>One guard recalls seeing this person carrying a peculiar bag.</p>",
+      "background": "guards-station.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Investigate the Exhibition Room",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-2": {
+      "title": "Exhibition Room",
+      "content": "<p>The exhibition room is filled with various artworks. The detective notices a peculiar painting that seems out of place. Upon closer inspection, there are signs of tampering around its frame.</p><p>A nearby visitor mentions seeing someone tampering with the painting last night.</p>",
+      "background": "exhibition-room.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Inspect the Painting",
+          "panelId": "panel-3"
+        },
+        {
+          "id": "action-2",
+          "title": "Return to the Entrance Hall",
+          "panelId": "panel-0"
+        }
+      ]
+    },
+    "panel-3": {
+      "title": "Tampered Painting",
+      "content": "<p>The painting has a hidden compartment behind it. Inside, the detective finds a small notebook containing coded messages and a list of items that were stolen.</p><p>This notebook could be a crucial piece of evidence.</p>",
+      "background": "tampered-painting.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Decipher the Notebook",
+          "panelId": "panel-4"
+        },
+        {
+          "id": "action-2",
+          "title": "Return to the Exhibition Room",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-4": {
+      "title": "Deciphering Room",
+      "content": "<p>In a quiet room, the detective deciphers the messages in the notebook. They reveal details about the thefts and mention a rendezvous point for the thief near the museum's loading dock.</p><p>It’s time to head to the loading dock for further investigation.</p>",
+      "background": "deciphering-room.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Go to the Loading Dock",
+          "panelId": "panel-5"
+        }
+      ]
+    },
+    "panel-5": {
+      "title": "Loading Dock",
+      "content": "<p>The loading dock is quiet and deserted. However, the detective finds traces of mud and a scrap of fabric matching the description given by the guards.</p><p>This must be where the thief made their escape. The final piece of evidence is found here, leading to the case's resolution.</p>",
+      "background": "loading-dock.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Return to the Entrance Hall",
+          "panelId": "panel-0"
+        }
+      ]
+    }
+  },
+  "facts": {
+    "fact-1": {
+      "panelId": "panel-1",
+      "title": "Guard Testimony",
+      "description": "The guards saw a suspicious person near the modern art exhibit."
+    },
+    "fact-2": {
+      "panelId": "panel-2",
+      "title": "Visitor Testimony",
+      "description": "A visitor saw someone tampering with a painting last night."
+    },
+    "fact-3": {
+      "panelId": "panel-3",
+      "title": "Notebook",
+      "description": "A notebook with coded messages and a list of stolen items."
+    },
+    "fact-4": {
+      "panelId": "panel-4",
+      "title": "Decoded Messages",
+      "description": "Messages reveal details about the thefts and a rendezvous point.",
+      "requiredFacts": ["fact-3"]
+    },
+    "fact-5": {
+      "panelId": "panel-5",
+      "title": "Mud and Fabric",
+      "description": "Traces of mud and a scrap of fabric found at the loading dock."
+    },
+    "fact-6": {
+      "title": "Thief's Escape Route",
+      "description": "The thief used the loading dock as an escape route.",
+      "requiredFacts": ["fact-4", "fact-5"]
+    },
+    "fact-7": {
+      "title": "Thief's Identity",
+      "description": "The identity of the thief is deduced from the escape route and testimonies.",
+      "requiredFacts": ["fact-1", "fact-6"]
+    }
+  }
+}

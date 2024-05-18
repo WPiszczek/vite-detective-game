@@ -21,9 +21,6 @@ export const checkArrayDifference = (
   const checkedNotRequired = checked.filter((x) => !required.includes(x));
   const requiredNotChecked = required.filter((x) => !checked.includes(x));
   const requiredNotFound = required.filter((x) => !found.includes(x));
-  console.log("checkedNotRequired", checkedNotRequired);
-  console.log("requiredNotChecked", requiredNotChecked);
-  console.log("requiredNotFound", requiredNotFound);
 
   if (
     checkedNotRequired.length === requiredNotChecked.length &&
