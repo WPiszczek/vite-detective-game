@@ -150,15 +150,10 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
     let differenceStates: ArrayDifference[] = [];
     Object.keys(facts).forEach((factId) => {
       const fact = facts[factId];
-      console.log("factId", factId);
       if (!fact.requiredFacts || fact.isFound) return false;
       const requiredFactsIds = fact.requiredFacts;
 
-      const result = checkArrayDifference(
-        checkedFactsIds,
-        requiredFactsIds,
-        foundFactsIds
-      );
+      const result = checkArrayDifference(checkedFactsIds, requiredFactsIds);
       differenceStates.push(result);
       if (result === ArrayDifference.IDENTICAL) {
         setFoundFactsIds((prev) => [...new Set([...prev, factId])]);
@@ -173,7 +168,6 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
       }
     });
 
-    console.log("differenceStates", differenceStates);
     if (differenceStates.includes(ArrayDifference.IDENTICAL)) return;
 
     if (differenceStates.includes(ArrayDifference.ONE_WRONG)) {

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { Button as Button_Unstyled } from "../../features/common/components";
+
 export const Wrapper = styled.div<{ $img: string }>`
   padding: 100px 180px;
   display: flex;
@@ -13,7 +15,8 @@ export const Wrapper = styled.div<{ $img: string }>`
     background-image: url(${({ $img }) => $img});
     background-attachment: fixed;
     background-position: 0 0;
-    opacity: 0.3;
+    background-size: cover;
+    opacity: 0.5;
     position: absolute;
     pointer-events: none;
     top: 0;
@@ -38,3 +41,5 @@ export const ButtonsWrapper = styled.div`
   flex-direction: column;
   gap: 30px;
 `;
+
+export const Button = styled(Button_Unstyled)``;
