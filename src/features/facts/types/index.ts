@@ -16,3 +16,10 @@ export interface Fact {
 export type FactWithId = Fact & { id: string };
 
 export type Facts = Record<string, Fact>;
+
+export interface FactsTree {
+  name: string;
+  description?: string;
+  isFound?: boolean;
+  children?: FactsTree[];
+}

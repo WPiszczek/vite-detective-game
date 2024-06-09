@@ -8,14 +8,14 @@ export const Wrapper = styled.div`
   position: fixed;
   left: 0;
   right: 0;
-  top: 30%;
+  top: 8%;
   margin-left: auto;
   margin-right: auto;
   z-index: 100;
   background-color: ${({ theme }) => theme.colors.veryLightBlue};
-  opacity: 0.9;
-  width: 500px;
-  height: 240px;
+  opacity: 0.95;
+  width: 1200px;
+  height: 700px;
   border-radius: 20px;
   border: 1px solid ${({ theme }) => theme.colors.veryDarkBlue};
   padding: 30px;
@@ -58,7 +58,7 @@ export const ActionsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
-  margin-top: 20px;
+  margin-top: 10px;
 `;
 
 export const Action = styled(Button)`

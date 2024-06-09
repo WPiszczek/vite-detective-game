@@ -59,12 +59,12 @@
     "fact-2": {
       "panelId": "panel-0",
       "title": "Fact 2",
-      "description": "Description of Fact 2"
+      "description": "Description of Fact 2. Connect with Fact 1 and Fact 6."
     },
     "fact-3": {
       "panelId": "panel-1",
       "title": "Fact 3",
-      "description": "Description of Fact 3. Connect with Fact 1 and Fact 6."
+      "description": "Description of Fact 3"
     },
     "fact-4": {
       "panelId": "panel-2",
@@ -89,7 +89,7 @@
     "fact-8": {
       "title": "Fact 8",
       "description": "Description of Fact 8",
-      "requiredFacts": ["fact-1", "fact-3", "fact-6"]
+      "requiredFacts": ["fact-1", "fact-2", "fact-6"]
     },
     "fact-9": {
       "title": "Fact 9",

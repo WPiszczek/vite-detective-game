@@ -9,16 +9,14 @@ import {
 import lunr from "lunr";
 
 import { GameContext } from "../../game/context";
-import { FactWithId, Facts } from "../types";
+import { FactsTree, FactWithId, Facts } from "../types";
 import {
   showFailNotification,
   showInfoNotification,
-  showSuccessNotification
-} from "../utils";
-import {
+  showSuccessNotification,
   ArrayDifference,
   checkArrayDifference
-} from "../utils/checkArrayDifference";
+} from "../utils";
 
 const defaultSearchIndex = lunr(function () {
   this.field("title");
@@ -37,6 +35,7 @@ export const FactsContext = createContext<{
   isFactChecked: (id: string) => boolean;
   areSomeFactsChecked: () => boolean;
   checkFactConnection: () => void;
+  getFactsTree: () => FactsTree;
 }>({
   facts: {},
   searchResults: [],
@@ -48,7 +47,8 @@ export const FactsContext = createContext<{
   toggleFullTextSearch: () => {},
   isFactChecked: () => false,
   areSomeFactsChecked: () => false,
-  checkFactConnection: () => {}
+  checkFactConnection: () => {},
+  getFactsTree: () => ({ name: "" })
 });
 
 export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
@@ -63,6 +63,7 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [searchIndex, setSearchIndex] = useState(defaultSearchIndex);
 
   useEffect(() => {
+    setFoundFactsIds([]);
     setFacts(game.facts);
     setFinalFactId(game.finalFactId);
     setIsStoryFinished(false);
@@ -240,6 +241,25 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
     setIsFullTextSearch((prev) => !prev);
   };
 
+  const getFactChildren = (factId: string): FactsTree => {
+    const fact = facts[factId];
+
+    const children = fact?.requiredFacts?.map((id) => {
+      return getFactChildren(id);
+    });
+
+    return {
+      name: fact.title,
+      description: fact.description,
+      isFound: fact.isFound,
+      children
+    };
+  };
+
+  const getFactsTree = () => {
+    return getFactChildren(finalFactId);
+  };
+
   return (
     <FactsContext.Provider
       value={{
@@ -253,7 +273,8 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
         toggleFullTextSearch,
         isFactChecked,
         areSomeFactsChecked,
-        checkFactConnection
+        checkFactConnection,
+        getFactsTree
       }}>
       {children}
     </FactsContext.Provider>

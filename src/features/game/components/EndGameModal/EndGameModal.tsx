@@ -1,6 +1,7 @@
 import { FC, useContext } from "react";
 import { useNavigate } from "react-router";
 
+import { FactsTree } from "../../../facts/components";
 import { GameContext } from "../../context";
 import {
   Action,
@@ -20,18 +21,20 @@ const EndGameModal: FC = () => {
     <Wrapper>
       <StarsWrapper>
         <StarIcon />
+        <TitleWrapper>CONGRATULATIONS!</TitleWrapper>
         <StarIcon />
       </StarsWrapper>
       <TextWrapper>
-        <TitleWrapper>CONGRATULATIONS!</TitleWrapper>
         <DescriptionWrapper>
           You finished {game.title}. Now you can try to play it again or check
-          out other story from the main menu.
+          out other story from the main menu. You can also check out the fact
+          tree of your investigation down below.
         </DescriptionWrapper>
       </TextWrapper>
       <ActionsWrapper>
         <Action onClick={() => navigate("/")}>Return to main menu</Action>
       </ActionsWrapper>
+      <FactsTree />
     </Wrapper>
   );
 };
