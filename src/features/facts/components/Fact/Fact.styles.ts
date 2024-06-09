@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   padding: 10px 20px;
   border: 1px solid ${({ theme }) => theme.colors.veryDarkBlue};
   border-radius: 10px;
+  background-color: ${({ theme }) => theme.colors.lightGrey};
+  opacity: 0.7;
 `;
 
 export const Header = styled.div`
@@ -32,7 +34,7 @@ export const CheckButton = styled.button`
   align-items: center;
   opacity: 0.7;
   border: 1px solid ${({ theme }) => theme.colors.veryDarkBlue};
-  
+
   &:hover {
     background-color: ${({ theme }) => theme.colors.lightGrey};
   }

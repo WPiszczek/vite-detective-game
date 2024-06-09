@@ -2,23 +2,22 @@ import { Store } from "react-notifications-component";
 
 type NotificationType = "success" | "danger" | "info";
 
-export const showSuccessNotification = (factTitles: string[]) => {
-  const message = factTitles.join(", ");
-  showNotification("success", "New facts found!", message);
+export const showSuccessNotification = (title: string) => {
+  showNotification("success", "New fact found!", title);
 };
 
 export const showFailNotification = () => {
   showNotification(
     "danger",
     "No facts found.",
-    "There are no facts coming from this combination. Try different combination or find new facts."
+    "There are no facts coming from this combination. Try using a different combination or finding new facts in other areas."
   );
 };
 
 export const showInfoNotification = (message?: string) => {
   showNotification(
     "info",
-    "You're close.",
+    "You're very close!",
     message ?? "Try changing something in this combination."
   );
 };

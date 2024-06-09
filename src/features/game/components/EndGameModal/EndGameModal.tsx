@@ -26,9 +26,9 @@ const EndGameModal: FC = () => {
       </StarsWrapper>
       <TextWrapper>
         <DescriptionWrapper>
-          You finished {game.title}. Now you can try to play it again or check
-          out other story from the main menu. You can also check out the fact
-          tree of your investigation down below.
+          You have finished {game.title}. Now you can try playing it again or
+          explore another story from the main menu. You can also view the fact
+          tree of your investigation below.
         </DescriptionWrapper>
       </TextWrapper>
       <ActionsWrapper>

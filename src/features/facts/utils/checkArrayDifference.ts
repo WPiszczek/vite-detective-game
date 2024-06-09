@@ -22,23 +22,54 @@ export const checkArrayDifference = (
   const requiredNotChecked = required.filter((x) => !checked.includes(x));
   const requiredNotFound = required.filter((x) => !found.includes(x));
 
+  console.log("----------");
+  console.log("checked", checked);
+  console.log("required", required);
+  console.log("found", found);
+
+  console.log("checkedNotRequired", checkedNotRequired);
+  console.log("requiredNotChecked", requiredNotChecked);
+  console.log("requiredNotFound", requiredNotFound);
+
+  let checkedRequiredCount = 0;
+  let checkedNotRequiredCount = 0;
+  checked.forEach((x) => {
+    if (required.includes(x)) checkedRequiredCount += 1;
+    else checkedNotRequiredCount += 1;
+  });
+
+  console.log("checkedRequiredCount", checkedRequiredCount);
+  console.log("checkedNotRequiredCount", checkedNotRequiredCount);
+
+  let requiredCheckedCount = 0;
+  let requiredNotCheckedCount = 0;
+  required.forEach((x) => {
+    if (checked.includes(x)) requiredCheckedCount += 1;
+    else requiredNotCheckedCount += 1;
+  });
+
+  console.log("requiredCheckedCount", requiredCheckedCount);
+  console.log("requiredNotCheckedCount", requiredNotCheckedCount);
+
+  if (requiredNotCheckedCount > 1 || checkedNotRequiredCount > 1) {
+    return ArrayDifference.DIFFERENT;
+  }
+
   if (
     checkedNotRequired.length === requiredNotChecked.length &&
-    requiredNotChecked.length === 1 &&
-    requiredNotFound.length === 0
+    requiredNotChecked.length === 1
   ) {
     return ArrayDifference.ONE_WRONG;
   }
 
   if (
     checkedNotRequired.length === 1 &&
-    checked.length - required.length === 1 &&
-    requiredNotFound.length === 0
+    checked.length - required.length === 1
   ) {
     return ArrayDifference.ONE_TOO_MUCH;
   }
 
-  if (requiredNotChecked.length === 1 && requiredNotFound.length === 0) {
+  if (requiredNotChecked.length === 1) {
     return ArrayDifference.ONE_MISSING;
   }
 

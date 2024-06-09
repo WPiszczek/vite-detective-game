@@ -53,6 +53,7 @@ export const FactsContext = createContext<{
 
 export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const { game, currentPanelId } = useContext(GameContext);
+  const [isInitialized, setIsInitialized] = useState(false);
   const [facts, setFacts] = useState<Facts>(game?.facts);
   const [foundFactsIds, setFoundFactsIds] = useState<string[]>([]);
   const [finalFactId, setFinalFactId] = useState(game?.finalFactId);
@@ -63,24 +64,32 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [searchIndex, setSearchIndex] = useState(defaultSearchIndex);
 
   useEffect(() => {
+    setIsInitialized(false);
     setFoundFactsIds([]);
     setFacts(game.facts);
     setFinalFactId(game.finalFactId);
     setIsStoryFinished(false);
+    setIsInitialized(true);
   }, [game]);
 
   useEffect(() => {
+    if (!isInitialized) return;
+
     setFacts((prev) => {
       const nextState = { ...prev };
       for (let key in nextState) {
-        if (nextState[key]?.panelId === currentPanelId) {
+        if (
+          nextState[key]?.panelId === currentPanelId &&
+          !nextState[key].isFound
+        ) {
           nextState[key].isFound = true;
+          showSuccessNotification(nextState[key].title);
           setFoundFactsIds((prev) => [...new Set([...prev, key])]);
         }
       }
       return nextState;
     });
-  }, [currentPanelId]);
+  }, [currentPanelId, isInitialized]);
 
   useEffect(() => {
     const newFoundFacts = getFoundFacts();
@@ -139,8 +148,9 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
     }
 
     let differenceStates: ArrayDifference[] = [];
-    const newFactsIds = Object.keys(facts).filter((key) => {
-      const fact = facts[key];
+    Object.keys(facts).forEach((factId) => {
+      const fact = facts[factId];
+      console.log("factId", factId);
       if (!fact.requiredFacts || fact.isFound) return false;
       const requiredFactsIds = fact.requiredFacts;
 
@@ -150,37 +160,38 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
         foundFactsIds
       );
       differenceStates.push(result);
-      return result === ArrayDifference.IDENTICAL;
-    });
+      if (result === ArrayDifference.IDENTICAL) {
+        setFoundFactsIds((prev) => [...new Set([...prev, factId])]);
+        setFactFound(factId);
+        showSuccessNotification(fact.title);
+        resetCheckedFacts();
 
-    if (newFactsIds.length > 0) {
-      setFoundFactsIds((prev) => [...prev, ...newFactsIds]);
-      setNewFoundFacts(newFactsIds);
-      const factTitles = newFactsIds.map((id) => facts[id].title);
-      showSuccessNotification(factTitles);
-      resetCheckedFacts();
-
-      newFactsIds.forEach((id) => {
-        if (isFinalFact(id)) {
+        if (isFinalFact(factId)) {
           toggleStoryFinished();
           return;
         }
-      });
-      return;
-    }
+      }
+    });
+
+    console.log("differenceStates", differenceStates);
+    if (differenceStates.includes(ArrayDifference.IDENTICAL)) return;
 
     if (differenceStates.includes(ArrayDifference.ONE_WRONG)) {
-      showInfoNotification("One of checked facts is wrong here.");
+      showInfoNotification(
+        "One of the facts in your combination does not fit with the others."
+      );
       return;
     }
 
     if (differenceStates.includes(ArrayDifference.ONE_TOO_MUCH)) {
-      showInfoNotification("Try using one less fact.");
+      showInfoNotification(
+        "One of the facts in your combination is unnecessary."
+      );
       return;
     }
 
     if (differenceStates.includes(ArrayDifference.ONE_MISSING)) {
-      showInfoNotification("One fact is missing.");
+      showInfoNotification("One fact is missing to complete your combination.");
       return;
     }
 
@@ -197,15 +208,13 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
     });
   };
 
-  const setNewFoundFacts = (newFactsIds: string[]) => {
+  const setFactFound = (factId: string) => {
     setFacts((prev) => {
       const nextState = { ...prev };
-      for (let key in newFactsIds) {
-        nextState[key] = {
-          ...nextState[key],
-          isFound: true
-        };
-      }
+      nextState[factId] = {
+        ...nextState[factId],
+        isFound: true
+      };
       return nextState;
     });
   };
