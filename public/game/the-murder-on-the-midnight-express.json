@@ -1,0 +1,204 @@
+{
+  "title": "Murder on the Midnight Express",
+  "startingPanelId": "panel-0",
+  "finalFactId": "fact-20",
+  "storyPanels": {
+    "panel-0": {
+      "title": "Train Compartment",
+      "content": "<p>You are in the train compartment where the murder occurred. The victim, Mr. Archibald, lies on the floor, a knife protruding from his chest. Passengers are in shock, and the train has come to a halt.</p>",
+      "background": "midnight-express-body.jpg",
+      "actions": [
+        { "id": "action-1", "title": "Examine the body", "panelId": "panel-1" },
+        {
+          "id": "action-2",
+          "title": "Interview passengers",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-1": {
+      "title": "Examine the Body",
+      "content": "<p>The victim is Mr. Archibald, a wealthy businessman. A knife is lodged in his chest, and there are signs of a struggle. His watch is missing.</p>",
+      "background": "midnight-express-body.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Inspect the surrounding area",
+          "panelId": "panel-3"
+        },
+        {
+          "id": "action-2",
+          "title": "Return to compartment",
+          "panelId": "panel-0"
+        }
+      ]
+    },
+    "panel-2": {
+      "title": "Interview Passengers",
+      "content": "<p>You start interviewing the passengers. They seem nervous and eager to clear their names. You notice a few suspicious behaviors.</p>",
+      "background": "midnight-express-passengers.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Talk to Ms. Langford",
+          "panelId": "panel-4"
+        },
+        {
+          "id": "action-2",
+          "title": "Talk to Mr. Hayes",
+          "panelId": "panel-5"
+        },
+        {
+          "id": "action-3",
+          "title": "Talk to Mr. Chu",
+          "panelId": "panel-6"
+        },
+        {
+          "id": "action-4",
+          "title": "Return to compartment",
+          "panelId": "panel-0"
+        }
+      ]
+    },
+    "panel-3": {
+      "title": "Inspect the Surrounding Area",
+      "content": "<p>You find a blood-stained obligation document near the window and a broken watch near the door. One name on the obligation belongs to Mr. Archibald, the other is illegible. The window is slightly open.</p>",
+      "background": "midnight-express-pocket-watch.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Return to compartment",
+          "panelId": "panel-0"
+        }
+      ]
+    },
+    "panel-4": {
+      "title": "Talk to Ms. Langford",
+      "content": "<p>Ms. Langford is a young woman who seems particularly shaken. She claims she saw a shadowy figure leaving the compartment just before the train stopped.</p>",
+      "background": "midnight-express-ms-langford.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Interview more passengers",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-5": {
+      "title": "Talk to Mr. Hayes",
+      "content": "<p>Mr. Hayes is a middle-aged man with a stern look. He insists he was in his own compartment the entire time and has no idea what happened.</p>",
+      "background": "midnight-express-mr-hayes.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Interview more passengers",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-6": {
+      "title": "Talk to Mr. Chu",
+      "content": "<p>Mr. Chu is a young, thin man. He claims that he saw Mr. Hayes sitting in his compartment while the attack happened. He also heard an argument concerning debt, between man and woman.</p>",
+      "background": "midnight-express-mr-chu.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Interview more passengers",
+          "panelId": "panel-2"
+        }
+      ]
+    }
+  },
+  "facts": {
+    "fact-1": {
+      "panelId": "panel-0",
+      "title": "Murder Weapon",
+      "description": "A knife is lodged in Mr. Archibald's chest."
+    },
+    "fact-2": {
+      "panelId": "panel-1",
+      "title": "Missing Watch",
+      "description": "Mr. Archibald's watch is missing."
+    },
+    "fact-3": {
+      "panelId": "panel-3",
+      "title": "Blood-stained Obligation",
+      "description": "An obligation document with blood stains was found near the window. It has a name of Mr. Archibald and one other, illegible."
+    },
+    "fact-4": {
+      "panelId": "panel-3",
+      "title": "Broken Watch",
+      "description": "A broken watch was found near the door."
+    },
+    "fact-5": {
+      "panelId": "panel-4",
+      "title": "Shadowy Figure",
+      "description": "Ms. Langford saw a shadowy figure leaving the compartment."
+    },
+    "fact-6": {
+      "panelId": "panel-5",
+      "title": "Mr. Hayes' Alibi",
+      "description": "Mr. Hayes claims he was in his own compartment the entire time."
+    },
+    "fact-7": {
+      "panelId": "panel-4",
+      "title": "Suspicious Behavior",
+      "description": "Ms. Langford seemed particularly shaken and nervous."
+    },
+    "fact-8": {
+      "title": "Watch Connection",
+      "description": "The broken watch found near the door belongs to Mr. Archibald.",
+      "requiredFacts": ["fact-2", "fact-4"]
+    },
+    "fact-9": {
+      "panelId": "panel-3",
+      "title": "Window Clue",
+      "description": "The slightly open window suggests someone might have escaped through it."
+    },
+    "fact-10": {
+      "title": "Nervous Ms. Langford",
+      "description": "Ms. Langford's nervousness and sighting of the shadowy figure make her a prime suspect.",
+      "requiredFacts": ["fact-7", "fact-5"]
+    },
+    "fact-11": {
+      "panelId": "panel-5",
+      "title": "Alibi Doubt",
+      "description": "Mr. Hayes' stern demeanor and solid alibi raise doubts."
+    },
+    "fact-12": {
+      "panelId": "panel-3",
+      "title": "Escape Route",
+      "description": "The open window suggests that the murderer might have escaped through it."
+    },
+    "fact-13": {
+      "title": "Motive for Theft",
+      "description": "The missing watch suggests the murder might have been for theft.",
+      "requiredFacts": ["fact-2", "fact-8"]
+    },
+    "fact-14": {
+      "title": "Ms. Langford's Debt",
+      "description": "Ms. Langford was in debt to Mr. Archibald.",
+      "requiredFacts": ["fact-17", "fact-3"]
+    },
+    "fact-15": {
+      "panelId": "panel-6",
+      "title": "Mr. Hayes' Innocence",
+      "description": "Mr. Hayes' alibi is corroborated by Mr. Chu."
+    },
+    "fact-17": {
+      "panelId": "panel-6",
+      "title": "Obligation Argument",
+      "description": "Mr. Chu heard an argument between man and woman, concerning obligation."
+    },
+    "fact-19": {
+      "title": "Clear Mr. Hayes",
+      "description": "Mr. Hayes is cleared of suspicion due to corroborated alibi.",
+      "requiredFacts": ["fact-11", "fact-15"]
+    },
+    "fact-20": {
+      "title": "Final Deduction",
+      "description": "Ms. Langford, in debt and desperate, murdered Mr. Archibald and escaped, leaving the blood-stained obligation behind.",
+      "requiredFacts": ["fact-13", "fact-14", "fact-19"]
+    }
+  }
+}

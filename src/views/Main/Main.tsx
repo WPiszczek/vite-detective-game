@@ -13,7 +13,11 @@ import {
 
 const games = [
   { name: "Demo Game", filename: "demo-game.json" },
-  { name: "The Museum Heist", filename: "the-museum-heist.json" }
+  { name: "The Museum Heist", filename: "the-museum-heist.json" },
+  {
+    name: "The Murder on the Midnight Express",
+    filename: "the-murder-on-the-midnight-express.json"
+  }
 ];
 
 const Main: FC = () => {

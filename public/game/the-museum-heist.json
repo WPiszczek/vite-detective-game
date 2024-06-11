@@ -1,132 +1,128 @@
 {
   "title": "The Museum Heist",
   "startingPanelId": "panel-0",
-  "finalFactId": "fact-7",
+  "finalFactId": "fact-10",
   "storyPanels": {
     "panel-0": {
-      "title": "Entrance Hall",
-      "content": "<p>The grand entrance hall of the museum is filled with visitors. The detective stands near the information desk, observing the flow of people. It's the perfect place to start the investigation.</p><p>Two guards are discussing the recent thefts, providing a potential lead.</p>",
-      "background": "entrance-hall.jpg",
+      "title": "Museum Entrance",
+      "content": "<p>You stand at the grand entrance of the city museum. The air is thick with an aura of mystery as the recent heist has everyone on edge.</p>",
+      "background": "museum-heist-entrance-hall.jpg",
       "actions": [
-        {
-          "id": "action-1",
-          "title": "Talk to the Guards",
-          "panelId": "panel-1"
-        },
+        { "id": "action-1", "title": "Go to Gallery", "panelId": "panel-1" },
         {
           "id": "action-2",
-          "title": "Head to the Exhibition Room",
+          "title": "Go to Security Room",
           "panelId": "panel-2"
         }
       ]
     },
     "panel-1": {
-      "title": "Guards' Station",
-      "content": "<p>The guards explain that several items have been stolen from the museum recently. They mention a suspicious person seen near the modern art exhibit.</p><p>One guard recalls seeing this person carrying a peculiar bag.</p>",
-      "background": "guards-station.jpg",
+      "title": "Gallery",
+      "content": "<p>The gallery is filled with exquisite art pieces, but your attention is drawn to the empty frame where the stolen portrait once hung.</p>",
+      "background": "museum-heist-exhibition-room.jpg",
       "actions": [
         {
           "id": "action-1",
-          "title": "Investigate the Exhibition Room",
-          "panelId": "panel-2"
+          "title": "Go to Museum Entrance",
+          "panelId": "panel-0"
+        },
+        {
+          "id": "action-2",
+          "title": "Go to Maintenance Room",
+          "panelId": "panel-3"
         }
       ]
     },
     "panel-2": {
-      "title": "Exhibition Room",
-      "content": "<p>The exhibition room is filled with various artworks. The detective notices a peculiar painting that seems out of place. Upon closer inspection, there are signs of tampering around its frame.</p><p>A nearby visitor mentions seeing someone tampering with the painting last night.</p>",
-      "background": "exhibition-room.jpg",
+      "title": "Security Room",
+      "content": "<p>The security room is bustling with activity. Officers are reviewing footage and analyzing data to find any clues about the heist.</p>",
+      "background": "museum-heist-guards-station.jpg",
       "actions": [
         {
           "id": "action-1",
-          "title": "Inspect the Painting",
-          "panelId": "panel-3"
-        },
-        {
-          "id": "action-2",
-          "title": "Return to the Entrance Hall",
+          "title": "Go to Museum Entrance",
           "panelId": "panel-0"
-        }
+        },
+        { "id": "action-2", "title": "Go to Basement", "panelId": "panel-4" }
       ]
     },
     "panel-3": {
-      "title": "Tampered Painting",
-      "content": "<p>The painting has a hidden compartment behind it. Inside, the detective finds a small notebook containing coded messages and a list of items that were stolen.</p><p>This notebook could be a crucial piece of evidence.</p>",
-      "background": "tampered-painting.jpg",
+      "title": "Maintenance Room",
+      "content": "<p>Old tools and equipment are scattered around. You notice a suspicious toolkit that doesn't belong here.</p>",
+      "background": "museum-heist-maintenance-room.jpg",
       "actions": [
-        {
-          "id": "action-1",
-          "title": "Decipher the Notebook",
-          "panelId": "panel-4"
-        },
-        {
-          "id": "action-2",
-          "title": "Return to the Exhibition Room",
-          "panelId": "panel-2"
-        }
+        { "id": "action-1", "title": "Go to Gallery", "panelId": "panel-1" },
+        { "id": "action-2", "title": "Go to Basement", "panelId": "panel-4" }
       ]
     },
     "panel-4": {
-      "title": "Deciphering Room",
-      "content": "<p>In a quiet room, the detective deciphers the messages in the notebook. They reveal details about the thefts and mention a rendezvous point for the thief near the museum's loading dock.</p><p>It’s time to head to the loading dock for further investigation.</p>",
-      "background": "deciphering-room.jpg",
+      "title": "Basement",
+      "content": "<p>The basement is dimly lit and full of old artifacts. Among the clutter, you spot a hastily discarded guard uniform.</p>",
+      "background": "museum-heist-basement.jpg",
       "actions": [
         {
           "id": "action-1",
-          "title": "Go to the Loading Dock",
-          "panelId": "panel-5"
-        }
-      ]
-    },
-    "panel-5": {
-      "title": "Loading Dock",
-      "content": "<p>The loading dock is quiet and deserted. However, the detective finds traces of mud and a scrap of fabric matching the description given by the guards.</p><p>This must be where the thief made their escape. The final piece of evidence is found here, leading to the case's resolution.</p>",
-      "background": "loading-dock.jpg",
-      "actions": [
+          "title": "Go to Security Room",
+          "panelId": "panel-2"
+        },
         {
-          "id": "action-1",
-          "title": "Return to the Entrance Hall",
-          "panelId": "panel-0"
+          "id": "action-2",
+          "title": "Go to Maintenance Room",
+          "panelId": "panel-3"
         }
       ]
     }
   },
   "facts": {
     "fact-1": {
-      "panelId": "panel-1",
-      "title": "Guard Testimony",
-      "description": "The guards saw a suspicious person near the modern art exhibit."
+      "panelId": "panel-2",
+      "title": "Entry Log",
+      "description": "The museum's entry log shows a suspicious entry at 2 AM, well past closing time."
     },
     "fact-2": {
-      "panelId": "panel-2",
-      "title": "Visitor Testimony",
-      "description": "A visitor saw someone tampering with a painting last night."
+      "panelId": "panel-1",
+      "title": "Empty Frame",
+      "description": "The empty frame of the stolen portrait has a small piece of fabric caught on it."
     },
     "fact-3": {
-      "panelId": "panel-3",
-      "title": "Notebook",
-      "description": "A notebook with coded messages and a list of stolen items."
+      "panelId": "panel-2",
+      "title": "Security Footage",
+      "description": "Security footage reveals a shadowy figure in a guard uniform near the gallery."
     },
     "fact-4": {
-      "panelId": "panel-4",
-      "title": "Decoded Messages",
-      "description": "Messages reveal details about the thefts and a rendezvous point.",
-      "requiredFacts": ["fact-3"]
+      "panelId": "panel-3",
+      "title": "Suspicious Toolkit",
+      "description": "A toolkit containing lock-picking tools that seems out of place in the maintenance room."
     },
     "fact-5": {
-      "panelId": "panel-5",
-      "title": "Mud and Fabric",
-      "description": "Traces of mud and a scrap of fabric found at the loading dock."
+      "panelId": "panel-4",
+      "title": "Guard Uniform",
+      "description": "A guard uniform found discarded in the basement, with mud stains on the boots."
     },
     "fact-6": {
-      "title": "Thief's Escape Route",
-      "description": "The thief used the loading dock as an escape route.",
-      "requiredFacts": ["fact-4", "fact-5"]
+      "panelId": "panel-0",
+      "title": "Witness Testimony",
+      "description": "A witness saw someone leaving the museum at 2:15 AM with a large bag."
     },
     "fact-7": {
-      "title": "Thief's Identity",
-      "description": "The identity of the thief is deduced from the escape route and testimonies.",
+      "title": "Intruder's Identity",
+      "description": "The intruder was posing as a security guard.",
+      "requiredFacts": ["fact-3", "fact-5"]
+    },
+    "fact-8": {
+      "title": "Heist Timing",
+      "description": "The heist occurred at 2 AM.",
       "requiredFacts": ["fact-1", "fact-6"]
+    },
+    "fact-9": {
+      "title": "Intruder's Entry Method",
+      "description": "The intruder used lock-picking tools to gain entry.",
+      "requiredFacts": ["fact-4"]
+    },
+    "fact-10": {
+      "title": "Thief's Identity",
+      "description": "The thief is a former security guard who knew the museum's layout and timing.",
+      "requiredFacts": ["fact-7", "fact-8", "fact-9"]
     }
   }
 }
