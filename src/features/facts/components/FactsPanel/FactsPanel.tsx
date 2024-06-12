@@ -7,8 +7,6 @@ import {
   CheckButton,
   CheckButtonWrapper,
   FactsWrapper,
-  SearchButton,
-  SearchIcon,
   SearchInput,
   SearchInputWrapper,
   Wrapper
@@ -27,11 +25,11 @@ const FactsPanel: FC = () => {
 
   useEffect(() => {
     setSearchQuery("");
-  }, [currentPanelId]);
+  }, [currentPanelId, isFullTextSearch]);
 
   const handleSearchQuery = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
-    if (!isFullTextSearch) searchFacts(e.target.value);
+    searchFacts(e.target.value);
   };
 
   return (
@@ -42,11 +40,6 @@ const FactsPanel: FC = () => {
           value={searchQuery}
           onChange={handleSearchQuery}
         />
-        {isFullTextSearch && (
-          <SearchButton onClick={() => searchFacts(searchQuery)}>
-            <SearchIcon />
-          </SearchButton>
-        )}
       </SearchInputWrapper>
       <CheckButtonWrapper>
         <CheckButton

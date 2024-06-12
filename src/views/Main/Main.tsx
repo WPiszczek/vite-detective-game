@@ -12,7 +12,7 @@ import {
 } from "./Main.styles";
 
 const games = [
-  { name: "Demo Game", filename: "demo-game.json" },
+  // { name: "Demo Game", filename: "demo-game.json" },
   { name: "The Museum Heist", filename: "the-museum-heist.json" },
   {
     name: "The Murder on the Midnight Express",

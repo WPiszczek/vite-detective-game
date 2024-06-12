@@ -242,6 +242,8 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const toggleFullTextSearch = () => {
     setIsFullTextSearch((prev) => !prev);
+    const facts = getFoundFacts();
+    setSearchResults(facts);
   };
 
   const getFactChildren = (factId: string): FactsTree => {
