@@ -58,7 +58,7 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [foundFactsIds, setFoundFactsIds] = useState<string[]>([]);
   const [finalFactId, setFinalFactId] = useState(game?.finalFactId);
   const [isStoryFinished, setIsStoryFinished] = useState(false);
-  const [isFullTextSearch, setIsFullTextSearch] = useState(false);
+  const [isFullTextSearch, setIsFullTextSearch] = useState(Math.random() < 0.5); // randomize
 
   const [searchResults, setSearchResults] = useState<FactWithId[]>([]);
   const [searchIndex, setSearchIndex] = useState(defaultSearchIndex);
@@ -242,6 +242,8 @@ export const FactsProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const toggleFullTextSearch = () => {
     setIsFullTextSearch((prev) => !prev);
+    const facts = getFoundFacts();
+    setSearchResults(facts);
   };
 
   const getFactChildren = (factId: string): FactsTree => {

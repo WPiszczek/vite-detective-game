@@ -65,12 +65,12 @@ export const SettingsIcon = styled(SettingsIcon_Unstyled).attrs({
 })``;
 
 export const SettingsTooltip = styled.div`
-  visibility: hidden;
+  /* visibility: hidden; */
   color: ${({ theme }) => theme.colors.darkBlue};
   text-align: center;
   padding: 5px 0;
   z-index: 1;
-  opacity: 0;
+  /* opacity: 0; */
   transition: opacity 0.3s;
 
   ${SettingsButtonWrapper}:hover & {
