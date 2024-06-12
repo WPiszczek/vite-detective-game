@@ -1,0 +1,110 @@
+{
+  "title": "Demo Game",
+  "startingPanelId": "panel-0",
+  "finalFactId": "fact-10",
+  "storyPanels": {
+    "panel-0": {
+      "title": "Panel 0",
+      "content": "<p>Content of Panel 0.</p>",
+      "background": "panel0.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Go to Panel 1",
+          "panelId": "panel-1"
+        },
+        {
+          "id": "action-2",
+          "title": "Go to Panel 2",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-1": {
+      "title": "Panel 1",
+      "content": "<p>Content of Panel 1.</p>",
+      "background": "panel1.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Go to Panel 0",
+          "panelId": "panel-0"
+        },
+        {
+          "id": "action-2",
+          "title": "Go to Panel 2",
+          "panelId": "panel-2"
+        }
+      ]
+    },
+    "panel-2": {
+      "title": "Panel 2",
+      "content": "<p>Content of Panel 2.</p>",
+      "background": "panel2.jpg",
+      "actions": [
+        {
+          "id": "action-1",
+          "title": "Go to Panel 1",
+          "panelId": "panel-1"
+        },
+        {
+          "id": "action-2",
+          "title": "Go to Panel 0",
+          "panelId": "panel-0"
+        }
+      ]
+    }
+  },
+  "facts": {
+    "fact-1": {
+      "panelId": "panel-0",
+      "title": "Fact 1",
+      "description": "Description of Fact 1"
+    },
+    "fact-2": {
+      "panelId": "panel-0",
+      "title": "Fact 2",
+      "description": "Description of Fact 2. Connect with Fact 1 and Fact 6."
+    },
+    "fact-3": {
+      "panelId": "panel-1",
+      "title": "Fact 3",
+      "description": "Description of Fact 3"
+    },
+    "fact-4": {
+      "panelId": "panel-2",
+      "title": "Fact 4",
+      "description": "Description of Fact 4. Connect with Fact 5."
+    },
+    "fact-5": {
+      "panelId": "panel-2",
+      "title": "Fact 5",
+      "description": "Description of Fact 5"
+    },
+    "fact-6": {
+      "panelId": "panel-2",
+      "title": "Fact 6",
+      "description": "Description of Fact 6"
+    },
+    "fact-7": {
+      "title": "Fact 7",
+      "description": "Description of Fact 7. Connect with Fact 3.",
+      "requiredFacts": ["fact-4", "fact-5"]
+    },
+    "fact-8": {
+      "title": "Fact 8",
+      "description": "Description of Fact 8",
+      "requiredFacts": ["fact-1", "fact-2", "fact-6"]
+    },
+    "fact-9": {
+      "title": "Fact 9",
+      "description": "Description of Fact 9. Connect with Fact 8.",
+      "requiredFacts": ["fact-3", "fact-7"]
+    },
+    "fact-10": {
+      "title": "Fact 10",
+      "description": "Description of Fact 10",
+      "requiredFacts": ["fact-8", "fact-9"]
+    }
+  }
+}
