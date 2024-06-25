@@ -23,3 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 utils/api_key1.py
+**/__pycache__

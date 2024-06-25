@@ -14,7 +14,7 @@ In the example story below, facts 1-6 are found while traversing the story panel
 Return JSON object with the story that contains {} facts, about the museum heist.
 Here is an example story:
 {{
-  "title": "Demo Game",
+  "title": "Demo Game", z
   "startingPanelId": "panel-0",
   "finalFactId": "fact-10",
   "storyPanels": {{
